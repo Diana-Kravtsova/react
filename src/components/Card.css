@@ -1,0 +1,29 @@
+.card {
+    padding: 1rem;
+    background-color: #4b4b4b;
+    margin: 1rem auto 1rem 1rem;
+    max-width: 30rem;
+    min-height: 10rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+hr{
+    border: none;
+    border-top: 1px solid #838282;
+}
+
+.card-caption {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
