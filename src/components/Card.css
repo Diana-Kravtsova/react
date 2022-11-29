@@ -16,6 +16,23 @@ hr{
 .card-caption {
     font-size: 1.2rem;
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 0.15em;
+    margin-right: 0.5em;
+    border: 0.15em solid #007a7e;
+    cursor: pointer;
+}
+
+input:checked {
+    background-color: #007a7e;
 }
 
 .card-text {
