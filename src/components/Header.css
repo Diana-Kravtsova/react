@@ -1,8 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-
-    background-color: rgb(31, 31, 31);
+    background-color: #252525;
 }
 
 .header li{
