@@ -3,12 +3,13 @@
     background-color: #4b4b4b;
     margin: 1rem auto 1rem 1rem;
     max-width: 30rem;
+    min-width: 20rem;
     min-height: 10rem;
     border-radius: 12px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
-hr{
+hr {
     border: none;
     border-top: 1px solid #838282;
 }
@@ -18,6 +19,17 @@ hr{
     font-weight: bold;
     display: flex;
     justify-content: space-between;
+    max-width: 30rem;
+    min-width: 20rem;
+    word-break: break-all;
+}
+
+.card-caption input {
+    background-color: #4b4b4b;
+    border: 0.15em solid #007a7e;
+    color: #ffffff;
+    max-width: 30rem;
+    width: 20rem;
 }
 
 .checkbox-wrapper input[type="checkbox"] {
@@ -43,4 +55,39 @@ input:checked {
 .cards {
     display: flex;
     flex-wrap: wrap;
+}
+
+.button-pencil {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0.5em;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+}
+
+.pencil {
+    color: #007a7e;
+    width: 1.7em;
+    height: 1.7em;
+}
+
+.exit {
+    color: #7e0000;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.card-edit {
+    display: flex;
+    align-items: center;
+}
+
+.card-textarea textarea {
+    background-color: #4b4b4b;
+    border: 0.15em solid #007a7e;
+    color: #ffffff;
+    min-width: 20rem;
+    min-height: 10rem;
 }
