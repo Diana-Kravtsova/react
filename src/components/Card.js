@@ -1,86 +1,98 @@
 import './Card.css'
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {BsPencilSquare, BsCheck2Square, BsXSquare} from "react-icons/bs";
 
-function Card({caption, text}) {
+function Card({caption, text, edit}) {
     const [isChecked, setChecked] = useState(false);
     const [isEdit, setEdit] = useState(false);
-    const [currentCaption, setCurrentCaption] = useState(caption);
-    const [previousCaption, setPreviousCaption] = useState(caption);
-    const [currentText, setCurrentText] = useState(text);
-    const [previousText, setPreviousText] = useState(text);
+    const [card, setCard] = useState({caption, text})
 
     const handleCheckbox = () => {
         setChecked(!isChecked);
     };
-    const handleEdit = () => {
+
+    const closeCard = () => {
         setEdit(!isEdit);
-        setPreviousCaption(currentCaption);
-        setPreviousText(currentText);
         setChecked(false);
-    };
-    const handleCaption = (event) => {
-        setCurrentCaption(event.target.value);
-    };
-    const handleClose = () => {
-        setCurrentCaption(previousCaption);
-        setCurrentText(previousText);
-        handleEdit();
-    };
-    const handleText = (event) => {
-        setCurrentText(event.target.value);
+        setCard({caption, text});
     };
 
-    return isEdit ?
-        (<div className={'card'}>
-            <div className={'card-caption'}>
+    const editCaption = (event) => {
+        setCard({...card, caption: event.target.value});
+    }
+    const editText = (event) => {
+        setCard({...card, text: event.target.value});
+    }
 
-                <input value={currentCaption} type={text} onInput={handleCaption}/>
+    const saveCard = () => {
+        edit(card);
+        closeCard();
+    };
 
-                <div className={'card-edit'}>
-                    <button className={'button-pencil'}
-                            onClick={handleEdit}>
-                        <BsCheck2Square className={'pencil'}/>
-                    </button>
-
-                    <button className={'button-pencil'}
-                            onClick={handleClose}>
-                        <BsXSquare className={'exit'}/>
-                    </button>
+    if (isEdit) {
+        return (
+            <div className={'card'}>
+                <div className={'card-caption'}>
+                    <input
+                        value={card.caption}
+                        type={text}
+                        onChange={editCaption}
+                    />
+                    <div className={'card-edit'}>
+                        <button
+                            className={'button-pencil'}
+                            onClick={saveCard}
+                        >
+                            <BsCheck2Square className={'pencil'}/>
+                        </button>
+                        <button
+                            className={'button-pencil'}
+                            onClick={closeCard}
+                        >
+                            <BsXSquare className={'exit'}/>
+                        </button>
+                    </div>
+                </div>
+                <hr/>
+                <div className={'card-textarea'}>
+                    <textarea
+                        value={card.text}
+                        onChange={editText}
+                    />
                 </div>
             </div>
-            <hr/>
-            <div className={'card-textarea'}>
-                <textarea value={currentText} onInput={handleText}/>
-            </div>
-        </div>)
+        )
+    }
 
-        :
-
-        (<div className={'card'}
-              style={{backgroundColor: isChecked ? '#252525' : ''}}>
-
+    return (
+        <div
+            className={'card'}
+            style={{backgroundColor: isChecked ? '#252525' : ''}}
+        >
             <div className={'card-caption'}>
-                {currentCaption}
-
+                {caption}
                 <div className={'card-edit'}>
-                    <button className={'button-pencil'}
-                            onClick={handleEdit}>
+                    <button
+                        className={'button-pencil'}
+                        onClick={closeCard}
+                    >
                         <BsPencilSquare className={'pencil'}/>
                     </button>
-
                     <div className={'checkbox-wrapper'}>
-                        <input onChange={handleCheckbox}
-                               type={'checkbox'}
-                               checked={isChecked}/>
+                        <input
+                            onChange={handleCheckbox}
+                            type={'checkbox'}
+                            checked={isChecked}
+                        />
                     </div>
                 </div>
             </div>
             <hr/>
             <div className={'card-text'}>
-                {currentText}
+                {text}
             </div>
-        </div>);
+        </div>
+    );
 }
 
 export default Card;
