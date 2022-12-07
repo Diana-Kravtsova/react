@@ -1,30 +1,23 @@
 import Header from './components/Header';
 import Cards from './components/Cards';
+import {useState} from "react";
 
 function App() {
-    const info = [
-        {
-            id: '0',
-            caption: 'Caption',
-            text: 'Qvel illum, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.',
-        },
-        {
-            id: '1',
-            caption: 'Caption',
-            text: 'Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.',
-        },
-        {
-            id: '2',
-            caption: 'Caption',
-            text: 'Quis autem vel eum iure reprehenderit, qui in ea voluptate. Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.',
-        },
-    ];
+    let cardLength = 3;
+    const [info, setInfo] = useState([...Array(cardLength).keys()].map((id) => ({
+        id: id,
+        caption: 'Caption',
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim sapien, auctor ut bibendum in, molestie nec elit. Praesent velit magna, volutpat eu lacus vel, rutrum porta ex. Morbi vitae venenatis massa, et pretium enim. Donec sit amet condimentum urna. Morbi a mauris magna. Nunc ut nibh quis urna viverra lacinia.`
+    })));
+
+    const editCard = (id, card) => setInfo(info.map(value => value.id === id ? {id, ...card} : value))
 
     return (
         <div>
             <Header/>
             <Cards
                 info={info}
+                edit={editCard}
             />
         </div>
     );
