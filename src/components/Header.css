@@ -2,10 +2,12 @@
     display: flex;
     justify-content: space-between;
     background-color: #252525;
+    align-items: center;
+    padding-right: 1.2rem;
 }
 
-.header li{
-    display:inline;
+.header li {
+    display: inline;
     list-style: none;
     text-transform: capitalize;
     margin-right: 20px;

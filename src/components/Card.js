@@ -1,11 +1,16 @@
 import './Card.css'
-import {useState} from 'react';
-import {BsPencilSquare, BsCheck2Square, BsXSquare} from "react-icons/bs";
+import {useEffect, useState} from 'react';
+import {BsPencilSquare, BsCheck2Square, BsXSquare} from 'react-icons/bs';
+import Checkbox from './Checkbox';
 
-function Card({caption, text, edit}) {
+function Card({caption, text, edit, readonly}) {
     const [isChecked, setChecked] = useState(false);
     const [isEdit, setEdit] = useState(false);
-    const [card, setCard] = useState({caption, text})
+    const [card, setCard] = useState({caption, text});
+
+    useEffect(() => {
+        readonly && setEdit(false);
+    }, [readonly]);
 
     const handleCheckbox = () => {
         setChecked(!isChecked);
@@ -28,6 +33,26 @@ function Card({caption, text, edit}) {
         edit(card);
         closeCard();
     };
+
+    if (readonly) {
+        return (
+            <div
+                className={'card'}
+                style={{backgroundColor: isChecked ? '#252525' : ''}}
+            >
+                <div className={'card-caption'}>
+                    {caption}
+                    <div className={'card-edit'}>
+                        <Checkbox {...{handleCheckbox, isChecked}}/>
+                    </div>
+                </div>
+                <hr/>
+                <div className={'card-text'}>
+                    {text}
+                </div>
+            </div>
+        )
+    }
 
     if (isEdit) {
         return (
@@ -78,13 +103,7 @@ function Card({caption, text, edit}) {
                     >
                         <BsPencilSquare className={'pencil'}/>
                     </button>
-                    <div className={'checkbox-wrapper'}>
-                        <input
-                            onChange={handleCheckbox}
-                            type={'checkbox'}
-                            checked={isChecked}
-                        />
-                    </div>
+                    <Checkbox {...{handleCheckbox, isChecked}}/>
                 </div>
             </div>
             <hr/>
