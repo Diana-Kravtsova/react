@@ -1,7 +1,8 @@
 import Header from './components/Header';
 import Cards from './components/Cards';
-import Checkbox from "./components/Checkbox";
 import {useState} from 'react';
+import {BsLock, BsUnlock} from 'react-icons/bs';
+import './components/Header.css'
 
 function App() {
     let cardLength = 9;
@@ -20,10 +21,16 @@ function App() {
     return (
         <div>
             <Header>
-                <Checkbox
-                    handleCheckbox={handleReadonly}
-                    isChecked={readonly}
-                />
+                <button
+                    className={'button-readonly'}
+                    onClick={handleReadonly}
+                >
+                    {
+                        readonly ?
+                            <BsUnlock className={'lock'}/>
+                            : <BsLock className={'lock'}/>
+                    }
+                </button>
             </Header>
             <Cards {...{info, editCard, readonly}} />
         </div>

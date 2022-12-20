@@ -12,3 +12,18 @@
     text-transform: capitalize;
     margin-right: 20px;
 }
+
+.button-readonly {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+}
+
+.lock{
+    color: #007a7e;
+    width: 1.7em;
+    height: 1.7em;
+}
