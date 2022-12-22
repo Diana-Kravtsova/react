@@ -1,16 +1,15 @@
 import Card from './Card';
 import './Card.css'
 
-function Cards({info, edit}) {
+function Cards({info, editCard, readonly}) {
     return (
         <div className={'cards'}>
             {
                 info.map(({id, caption, text}) => (
                     <Card
                         key={id}
-                        caption={caption}
-                        text={text}
-                        edit={card => edit(id, card)}
+                        edit={card => editCard(id, card)}
+                        {...{caption, text, readonly}}
                     />
                 ))
             }
