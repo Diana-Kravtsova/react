@@ -24,18 +24,6 @@ hr {
     word-break: break-all;
 }
 
-.card-caption input {
-    background-color: #4b4b4b;
-    border: 0.15em solid #007a7e;
-    color: #ffffff;
-    max-width: 30rem;
-    width: 20rem;
-}
-
-input:checked {
-    background-color: #007a7e;
-}
-
 .card-text {
     font-size: 1rem;
     padding: 0.5rem;
@@ -50,7 +38,7 @@ input:checked {
 .button-pencil {
     -webkit-appearance: none;
     appearance: none;
-    margin: 0.5em;
+    margin-right: 5px;
     padding: 0;
     cursor: pointer;
     background: transparent;
