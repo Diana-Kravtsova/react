@@ -9,7 +9,7 @@ function Header({children}) {
             ]}/>
             {children}
         </div>
-    )
+    );
 }
 
 export default Header;

@@ -20,10 +20,37 @@
     cursor: pointer;
     background: transparent;
     border: none !important;
+    margin-left: 10px;
 }
 
-.lock{
+.lock {
     color: #007a7e;
+    width: 1.7em;
+    height: 1.7em;
+}
+
+.button-delete {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+}
+
+.button-delete:disabled .delete {
+    cursor: not-allowed;
+    color: #838282;
+}
+
+.delete {
+    color: #007a7e;
+    width: 1.7em;
+    height: 1.7em;
+}
+
+.delete:active {
+    color: #ffffff;
     width: 1.7em;
     height: 1.7em;
 }

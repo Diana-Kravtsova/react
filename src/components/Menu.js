@@ -9,7 +9,7 @@ function Menu({items}) {
                 ))
             }
         </ul>
-    )
+    );
 }
 
 export default Menu;
