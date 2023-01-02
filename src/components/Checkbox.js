@@ -24,15 +24,10 @@ const CheckboxContainer = styled.div`
 
 const Input = styled.input.attrs({type: "checkbox"})``;
 
-function Checkbox({handleCheckbox, isChecked}) {
-    return (
-        <CheckboxContainer>
-            <Input
-                onChange={handleCheckbox}
-                checked={isChecked}
-            />
-        </CheckboxContainer>
-    )
-}
+const Checkbox = (props) => (
+    <CheckboxContainer>
+        <Input {...props}/>
+    </CheckboxContainer>
+);
 
 export default Checkbox;
