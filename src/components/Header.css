@@ -13,7 +13,7 @@
     margin-right: 20px;
 }
 
-.button-readonly {
+.button {
     -webkit-appearance: none;
     appearance: none;
     padding: 0;
@@ -23,27 +23,12 @@
     margin-left: 10px;
 }
 
-.lock {
-    color: #007a7e;
-    width: 1.7em;
-    height: 1.7em;
-}
-
-.button-delete {
-    -webkit-appearance: none;
-    appearance: none;
-    padding: 0;
-    cursor: pointer;
-    background: transparent;
-    border: none !important;
-}
-
-.button-delete:disabled .delete {
+.button:disabled .delete {
     cursor: not-allowed;
     color: #838282;
 }
 
-.delete {
+.icon {
     color: #007a7e;
     width: 1.7em;
     height: 1.7em;
@@ -53,4 +38,8 @@
     color: #ffffff;
     width: 1.7em;
     height: 1.7em;
+}
+
+.buttons {
+    display: inline;
 }
