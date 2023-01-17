@@ -4,6 +4,7 @@ import {BsPencilSquare, BsCheck2Square, BsXSquare} from 'react-icons/bs';
 import Checkbox from '../Checkbox';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import {withLoadingDelay} from '../withLoadingDelay';
 
 function Card({caption, text, checked, edit, readonly, onCheck}) {
     const [isEdit, setEdit] = useState(false);
@@ -70,4 +71,4 @@ function Card({caption, text, checked, edit, readonly, onCheck}) {
     )
 }
 
-export default Card;
+export default withLoadingDelay(Card);

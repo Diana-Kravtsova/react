@@ -4,7 +4,7 @@
     margin: 1rem auto 1rem 1rem;
     max-width: 30rem;
     min-width: 30rem;
-    min-height: 10rem;
+    min-height: 15rem;
     border-radius: 12px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
@@ -75,4 +75,15 @@ hr {
     min-width: 28rem;
     min-height: 9rem;
     max-width: 28rem;
+}
+
+.loading-box {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.loading-spinner{
+    margin-left: auto;
+    margin-right: auto;
 }

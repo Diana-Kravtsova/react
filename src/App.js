@@ -39,7 +39,7 @@ function App() {
     }
 
     return (
-        <div>
+        <>
             <Header>
                 <div>
                     {
@@ -74,7 +74,7 @@ function App() {
                 </div>
             </Header>
             {content}
-        </div>
+        </>
     );
 }
 
