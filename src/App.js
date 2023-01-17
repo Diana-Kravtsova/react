@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {BsLock, BsTrash2, BsUnlock, BsPlusSquare} from 'react-icons/bs';
 import './components/Header.css';
 import { v4 as uuidv4 } from 'uuid';
+import Badge from './components/Badge';
 
 function App() {
     let cardLength = 3;
@@ -41,10 +42,12 @@ function App() {
     return (
         <>
             <Header>
-                <div>
+                <div className={'buttons'}>
+                    <Badge>{info.length}</Badge>
+                    <div className={'button-hr'}/>
                     {
                         readonly || (
-                            <div className={'buttons'}>
+                            <>
                                 <button
                                     className={'button'}
                                     onClick={addCard}
@@ -58,7 +61,7 @@ function App() {
                                 >
                                     <BsTrash2 className={'delete icon'}/>
                                 </button>
-                            </div>
+                            </>
                         )
                     }
                     <button

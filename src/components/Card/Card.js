@@ -5,6 +5,7 @@ import Checkbox from '../Checkbox';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import {withLoadingDelay} from '../withLoadingDelay';
+import PropTypes from 'prop-types';
 
 function Card({caption, text, checked, edit, readonly, onCheck}) {
     const [isEdit, setEdit] = useState(false);
@@ -69,6 +70,15 @@ function Card({caption, text, checked, edit, readonly, onCheck}) {
             />
         </div>
     )
+}
+
+Card.propTypes = {
+    caption: PropTypes.string,
+    text: PropTypes.string,
+    checked: PropTypes.bool,
+    edit: PropTypes.func,
+    readonly: PropTypes.bool,
+    onCheck: PropTypes.func,
 }
 
 export default withLoadingDelay(Card);
