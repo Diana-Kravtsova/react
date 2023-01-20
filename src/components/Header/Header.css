@@ -1,7 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: #252525;
+    background-color: var(--secondary-color);
     align-items: center;
     padding-right: 1.2rem;
 }
@@ -29,17 +29,26 @@
 }
 
 .icon {
-    color: #007a7e;
+    color: var(--main-color);
     width: 1.7em;
     height: 1.7em;
 }
 
 .delete:active {
-    color: #ffffff;
+    color: var(--text-color);
     width: 1.7em;
     height: 1.7em;
 }
 
 .buttons {
-    display: inline;
+    display: flex;
+    align-items: center;
+}
+
+.button-hr {
+    border: none;
+    border-left: 2px solid var(--main-color);
+    border-radius: 1px;
+    height: 30px;
+    margin: 0 0.5rem 0 1.2rem;
 }

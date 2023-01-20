@@ -1,4 +1,4 @@
-function Menu({items}) {
+function Menu({ items }) {
     return (
         <ul>
             {

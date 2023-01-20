@@ -1,13 +1,14 @@
-import './Header.css'
+import './Header.css';
 import Menu from './Menu';
+import ButtonMenu from './ButtonMenu';
 
-function Header({children}) {
+function Header() {
     return (
         <div className={'header'}>
             <Menu items={[
                 'header',
-            ]}/>
-            {children}
+            ]} />
+            <ButtonMenu />
         </div>
     );
 }
