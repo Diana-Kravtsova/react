@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export const withLoadingDelay = ControlledComponent => {
     return ({ ...props }) => {
-        const [isLoading, setIsLoading] = useState(false);
+        const [isLoading, setIsLoading] = useState(true);
 
         useEffect(() => {
             setIsLoading(true);
