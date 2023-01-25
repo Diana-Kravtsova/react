@@ -9,8 +9,17 @@
 .header li {
     display: inline;
     list-style: none;
-    text-transform: capitalize;
     margin-right: 20px;
+}
+
+.link {
+    color: var(--main-color);
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.activeLink{
+    color: var(--text-color);
 }
 
 .button {

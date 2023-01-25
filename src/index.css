@@ -35,3 +35,7 @@ body {
     border-radius: 10px;
     background: var(--main-color);
 }
+
+textarea:focus, input:focus{
+    outline: none;
+}
