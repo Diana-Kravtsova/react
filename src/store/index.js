@@ -1,18 +1,30 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { getPokemons } from '../services/PokemonService';
 
 const MyContext = createContext({});
 
 const Provider = ({ children }) => {
-    let cardLength = 3;
-    const [info, setInfo] = useState([...Array(cardLength).keys()].map(() => ({
-        id: uuidv4(),
-        caption: 'Caption',
-        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim sapien, auctor ut bibendum in, molestie nec elit. Praesent velit magna, volutpat eu lacus vel, rutrum porta ex. Morbi vitae venenatis massa, et pretium enim. Donec sit amet condimentum urna. Morbi a mauris magna. Nunc ut nibh quis urna viverra lacinia.`,
-        checked: false,
-    })));
-
+    const [isLoading, setIsLoading] = useState(true);
+    const [info, setInfo] = useState([]);
     const [readonly, setReadonly] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        getPokemons().then((response) => {
+            setTimeout(() => {
+                setInfo(response.map(data => {
+                    return {
+                        id: uuidv4(),
+                        caption: data['Name'],
+                        text: data['About'],
+                        checked: false,
+                    };
+                }));
+                setIsLoading(false);
+            }, 1000);
+        });
+    }, []);
 
     const editCard = (id, card) => setInfo(info.map(value => value.id === id ? { id, ...card } : value));
 
@@ -36,6 +48,7 @@ const Provider = ({ children }) => {
             handleReadonly,
             handleDelete,
             handleCheckbox,
+            isLoading,
         }}>
             {children}
         </MyContext.Provider>
