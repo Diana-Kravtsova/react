@@ -1,9 +1,26 @@
 import styled from 'styled-components';
+import classNames from 'classnames';
+import '../pages/SignIn.css';
 
 const InputContainer = styled.div`
     div {
         display: flex;
         margin-top: 1rem;
+    }
+
+    input {
+        color: var(--text-color);
+        background-color: var(--primary-color);
+        border: none;
+        border-bottom: 0.15em solid var(--main-color);
+    }
+
+    .inputError {
+        border-bottom: 0.15em solid #7e0000;
+    }
+
+    .iconError {
+        color: #7e0000;
     }
 
     span {
@@ -13,27 +30,18 @@ const InputContainer = styled.div`
     }
 `;
 
-const StyledInput = styled.input.attrs(props => ({ isInvalid: props.isInvalid }))`
-    background-color: var(--primary-color);
-    border: none;
-    border-bottom: 0.15em solid ${props => props.isInvalid ? '#7e0000' : 'var(--main-color)'};
-    color: var(--text-color);
-`;
-
-const Input = (props) => (
+const Input = ({ errors, touched, Icon, ...props }) => (
     <InputContainer>
         <div>
-            {props.icon}
-            <StyledInput
-                id={props.id}
-                type={props.type}
-                placeholder={props.placeholder}
-                onChange={props.onChange}
-                value={props.value}
-                isInvalid={props.isInvalid}
+            <Icon className={classNames('icon', { 'iconError': touched && errors })} />
+            <input
+                className={classNames({ 'inputError': touched && errors })}
+                id={props.type}
+                name={props.type}
+                {...props}
             />
         </div>
-        <span>{props.error}</span>
+        <span>{touched && errors}</span>
     </InputContainer>
 );
 

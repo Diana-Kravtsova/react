@@ -18,7 +18,16 @@ function SignIn() {
             .matches(/(\D\d|\d\D)+/g, 'Must have numbers and characters'),
     });
 
-    const formik = useFormik({
+    const {
+        values,
+        errors,
+        touched,
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        dirty,
+        isValid,
+    } = useFormik({
         initialValues: {
             email: '',
             password: '',
@@ -37,32 +46,32 @@ function SignIn() {
     });
 
     return (
-        <form className={'signIn'} onSubmit={formik.handleSubmit}>
+        <form className={'signIn'} onSubmit={handleSubmit}>
             <h2>Sign in</h2>
             <Input
-                id={'email'}
                 type={'email'}
                 placeholder={'Username'}
-                onChange={formik.handleChange}
-                value={formik.values.email}
-                icon={<FiUser className={'icon'} />}
-                error={formik.errors.email}
-                isInvalid={formik.errors.email}
+                onChange={handleChange}
+                value={values.email}
+                Icon={FiUser}
+                errors={errors.email}
+                touched={touched.email}
+                onBlur={handleBlur}
             />
             <Input
-                id={'password'}
                 type={'password'}
                 placeholder={'Password'}
-                onChange={formik.handleChange}
-                value={formik.values.password}
-                icon={<RiLockPasswordLine className={'icon'} />}
-                error={formik.errors.password}
-                isInvalid={formik.errors.password}
+                onChange={handleChange}
+                value={values.password}
+                Icon={RiLockPasswordLine}
+                errors={errors.password}
+                touched={touched.password}
+                onBlur={handleBlur}
             />
             <button
                 className={'signIn-button'}
                 type={'submit'}
-                disabled={!formik.dirty || !formik.isValid}
+                disabled={!dirty || !isValid}
             >
                 Sign in
             </button>

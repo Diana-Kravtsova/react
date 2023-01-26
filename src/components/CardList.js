@@ -27,7 +27,7 @@ function CardList() {
     }
 
     if (count <= 0) {
-        return <p style={{ textAlign: 'center' }}>All cards are gone...</p>;
+        return <h1 className={'noCards'}>All cards are gone...</h1>;
     }
 
     return (
