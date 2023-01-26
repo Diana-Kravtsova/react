@@ -13,10 +13,10 @@ const InputContainer = styled.div`
     }
 `;
 
-const StyledInput = styled.input.attrs(props => ({ isValid: props.isValid }))`
+const StyledInput = styled.input.attrs(props => ({ isInvalid: props.isInvalid }))`
     background-color: var(--primary-color);
     border: none;
-    border-bottom: 0.15em solid ${props => props.isValid ? '#7e0000' : 'var(--main-color)'};
+    border-bottom: 0.15em solid ${props => props.isInvalid ? '#7e0000' : 'var(--main-color)'};
     color: var(--text-color);
 `;
 
@@ -30,7 +30,7 @@ const Input = (props) => (
                 placeholder={props.placeholder}
                 onChange={props.onChange}
                 value={props.value}
-                isValid={props.isValid}
+                isInvalid={props.isInvalid}
             />
         </div>
         <span>{props.error}</span>

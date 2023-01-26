@@ -47,7 +47,7 @@ function SignIn() {
                 value={formik.values.email}
                 icon={<FiUser className={'icon'} />}
                 error={formik.errors.email}
-                isValid={formik.errors.email}
+                isInvalid={formik.errors.email}
             />
             <Input
                 id={'password'}
@@ -57,7 +57,7 @@ function SignIn() {
                 value={formik.values.password}
                 icon={<RiLockPasswordLine className={'icon'} />}
                 error={formik.errors.password}
-                isValid={formik.errors.password}
+                isInvalid={formik.errors.password}
             />
             <button
                 className={'signIn-button'}
