@@ -1,10 +1,18 @@
+import { NavLink } from 'react-router-dom';
+
 function Menu({ items }) {
     return (
         <ul>
             {
-                items.map((name, id) => (
+                items.map((link, id) => (
                     <li key={id}>
-                        {name}
+                        <NavLink
+                            to={link.link}
+                            className={({ isActive }) => isActive ? 'activeLink link' : 'link'}
+                            end
+                        >
+                            {' ' + link.name}
+                        </NavLink>
                     </li>
                 ))
             }
