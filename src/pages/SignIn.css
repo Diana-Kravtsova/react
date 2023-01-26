@@ -14,19 +14,8 @@
     width: 50%;
 }
 
-.signIn input {
-    background-color: var(--primary-color);
-    border: none;
-    border-bottom: 0.15em solid var(--main-color);
-    color: var(--text-color);
-}
-
-.inputContainer {
-    display: flex;
-    margin-top: 1rem;
-}
-
 .signIn-button {
+    margin-top: 3em;
     border: none;
     color: var(--text-color);
     background-color: var(--main-color);
@@ -37,4 +26,10 @@
 .signIn-button:active {
     background-color: var(--text-color);
     color: var(--main-color);
+}
+
+.signIn-button:disabled {
+    cursor: not-allowed;
+    background-color: #838282;
+    color: var(--text-color);
 }
