@@ -1,66 +1,80 @@
 import './Card.css';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsPencilSquare, BsCheck2Square, BsXSquare } from 'react-icons/bs';
 import Checkbox from '../Checkbox';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import { withLoadingDelay } from '../withLoadingDelay';
 import PropTypes from 'prop-types';
-import { MyContext } from '../../store';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function Card({ caption, text, checked, edit, onCheck }) {
-    const { readonly } = useContext(MyContext);
-
+export function Card({ card, onEdit, variant }) {
+    const {
+        id,
+        caption,
+        text,
+        checked,
+    } = card;
+    const navigate = useNavigate();
+    const { readonly } = useSelector(state => state.pokemon);
     const [isEdit, setEdit] = useState(!text && !caption);
-    const [card, setCard] = useState({ caption, text, checked });
+    const [newCard, setNewCard] = useState(card);
 
     useEffect(() => {
         readonly && setEdit(false);
     }, [readonly]);
 
-    const closeCard = () => {
+    const onCloseCard = () => {
+        setNewCard(card);
         setEdit(!isEdit);
-        setCard({ caption, text, checked: false });
     };
 
-    const saveCard = () => {
-        edit(card);
-        closeCard();
+    const onSaveCard = () => {
+        onEdit(newCard);
+        setEdit(!isEdit);
     };
 
-    const editCard = () => {
-        onCheck(false);
-        closeCard();
+    const onEditCard = () => {
+        onEdit({ ...card, checked: false });
+        setEdit(!isEdit);
     };
+
+    const stopPropagation = e => e.stopPropagation();
+
+    const onCheckCard = () => onEdit({ ...card, checked: !(isEdit || checked) });
 
     const checkbox = (
         <Checkbox
-            onChange={() => onCheck(!(isEdit || checked))}
             {...{ checked }}
+            onChange={onCheckCard}
+            onDoubleClick={stopPropagation}
         />
     );
 
     return (
         <div
-            className={'card'}
+            className={variant === 'card' ? 'card' : 'page'}
             style={{ backgroundColor: checked ? '#252525' : '' }}
+            onDoubleClick={(!isEdit && variant === 'card') ? () => navigate(`card/${id}`) : null}
         >
             <CardHeader
-                onEdit={caption => setCard({ ...card, caption })}
-                {...{ caption, isEdit, editedCaption: card.caption, readonly, checkbox }}
+                onEdit={caption => setNewCard({ ...newCard, caption })}
+                checkbox={variant === 'card' ? checkbox : null}
+                {...{ caption, isEdit, editedCaption: newCard.caption, readonly }}
             >
                 {
                     isEdit ? (
                         <div className={'card-edit'}>
-                            <button className={'button-pencil'} onClick={saveCard}>
+                            <button className={'button-pencil'} onClick={onSaveCard}>
                                 <BsCheck2Square className={'pencil'} />
                             </button>
-                            <button className={'button-pencil'} onClick={closeCard}>
+                            <button className={'button-pencil'} onClick={onCloseCard}>
                                 <BsXSquare className={'exit'} />
                             </button>
                         </div>
                     ) : (
-                        <button className={'button-pencil'} onClick={editCard}>
+                        <button className={'button-pencil'} onClick={onEditCard}>
                             <BsPencilSquare className={'pencil'} />
                         </button>
                     )
@@ -68,20 +82,23 @@ function Card({ caption, text, checked, edit, onCheck }) {
             </CardHeader>
             <hr />
             <CardBody
-                onEdit={text => setCard({ ...card, text })}
-                {...{ text, isEdit, editedText: card.text, readonly }}
+                onEdit={text => setNewCard({ ...newCard, text })}
+                {...{ text, isEdit, editedText: newCard.text, readonly }}
             />
         </div>
     );
 }
 
 Card.propTypes = {
-    caption: PropTypes.string,
-    text: PropTypes.string,
-    checked: PropTypes.bool,
-    edit: PropTypes.func,
+    card: PropTypes.shape({
+        id: PropTypes.string,
+        caption: PropTypes.string,
+        text: PropTypes.string,
+        checked: PropTypes.bool,
+    }),
+    onEdit: PropTypes.func,
     readonly: PropTypes.bool,
-    onCheck: PropTypes.func,
+    variant: PropTypes.string,
 };
 
 export default withLoadingDelay(Card);

@@ -13,7 +13,7 @@ export const withLoadingDelay = ControlledComponent => {
         const loading = (
             <div className={'card loading-box'}>
                 <ClimbingBoxLoader
-                    color={'#007a7e'}
+                    color="#007a7e"
                     className={'loading-spinner'}
                     size={20}
                 />

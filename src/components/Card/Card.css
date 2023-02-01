@@ -9,6 +9,15 @@
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 }
 
+.page {
+    padding: 5vw;
+    margin: 5vw 20vw 0 20vw;
+    min-height: 25rem;
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
 hr {
     border: none;
     border-top: 1px solid #838282;
@@ -25,9 +34,7 @@ hr {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
-    max-width: 30rem;
-    min-width: 20rem;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .card-text {

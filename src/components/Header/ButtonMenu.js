@@ -1,16 +1,12 @@
 import Badge from '../Badge';
 import { BsLock, BsPlusSquare, BsTrash2, BsUnlock } from 'react-icons/bs';
-import { useContext } from 'react';
-import { MyContext } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPokemonCount, handleAdd, handleReadonly, handleDelete } from '../../store/pokemonSlice';
 
 function ButtonMenu() {
-    const {
-        count,
-        addCard,
-        handleDelete,
-        readonly,
-        handleReadonly,
-    } = useContext(MyContext);
+    const { readonly } = useSelector(state => state.pokemon);
+    const dispatch = useDispatch();
+    const count = useSelector(selectPokemonCount);
 
     return (
         <div className={'buttons'}>
@@ -21,13 +17,13 @@ function ButtonMenu() {
                     <>
                         <button
                             className={'button'}
-                            onClick={addCard}
+                            onClick={() => dispatch(handleAdd())}
                         >
                             <BsPlusSquare className={'icon'} />
                         </button>
                         <button
                             className={'button'}
-                            onClick={handleDelete}
+                            onClick={() => dispatch(handleDelete())}
                             disabled={!count}
                         >
                             <BsTrash2 className={'delete icon'} />
@@ -37,7 +33,7 @@ function ButtonMenu() {
             }
             <button
                 className={'button'}
-                onClick={handleReadonly}
+                onClick={() => dispatch(handleReadonly())}
             >
                 {
                     readonly ?

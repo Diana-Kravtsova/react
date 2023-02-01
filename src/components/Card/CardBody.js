@@ -1,10 +1,10 @@
-import './Card.css'
+import './Card.css';
 
-function CardBody({onEdit, text, isEdit, editedText}) {
+function CardBody({ onEdit, text, isEdit, editedText }) {
     if (isEdit) {
         return (
             <div className={'card-textarea'}>
-                <textarea value={editedText} onChange={event => onEdit(event.target.value)}/>
+                <textarea value={editedText} onChange={event => onEdit(event.target.value)} />
             </div>
         );
     }

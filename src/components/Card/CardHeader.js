@@ -1,6 +1,6 @@
-import './Card.css'
+import './Card.css';
 
-function CardHeader({onEdit, caption, isEdit, editedCaption, readonly, children, checkbox}) {
+function CardHeader({ onEdit, caption, isEdit, editedCaption, readonly, children, checkbox }) {
     if (readonly) {
         return (
             <div className={'card-caption'}>
@@ -15,7 +15,7 @@ function CardHeader({onEdit, caption, isEdit, editedCaption, readonly, children,
     if (isEdit) {
         return (
             <div className={'card-caption'}>
-                <input value={editedCaption} onChange={event => onEdit(event.target.value)}/>
+                <input value={editedCaption} onChange={event => onEdit(event.target.value)} />
                 {children}
             </div>
         );

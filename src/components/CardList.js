@@ -1,29 +1,37 @@
 import Card from './Card/Card';
 import './Card/Card.css';
-import { useContext } from 'react';
-import { MyContext } from '../store';
 import { BarLoader } from 'react-spinners';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPokemonCount, handleEdit } from '../store/pokemonSlice';
 
 function CardList() {
     const {
-        count,
         info,
-        readonly,
-        editCard,
-        handleCheckbox,
-        isLoading,
-    } = useContext(MyContext);
+        status,
+        error,
+    } = useSelector(state => state.pokemon);
 
-    if (isLoading) {
+    const dispatch = useDispatch();
+    const count = useSelector(selectPokemonCount);
+
+    if (status === 'idle') {
+        return null;
+    }
+
+    if (status === 'loading') {
         return (
             <div className={'loading-box'}>
                 <BarLoader
-                    color={'#007a7e'}
+                    color="#007a7e"
                     className={'loading-spinner'}
                     width={'100%'}
                 />
             </div>
         );
+    }
+
+    if (status === 'failed') {
+        return <h1 className={'noCards'}>{error}</h1>;
     }
 
     if (count <= 0) {
@@ -33,12 +41,12 @@ function CardList() {
     return (
         <div className={'cards'}>
             {
-                info.map(({ id, caption, text, checked }) => (
+                info.map(card => (
                     <Card
-                        key={id}
-                        edit={card => editCard(id, card)}
-                        onCheck={newValue => handleCheckbox(id, newValue)}
-                        {...{ caption, text, checked, readonly }}
+                        key={card.id}
+                        variant="card"
+                        card={card}
+                        onEdit={updateCard => dispatch(handleEdit(updateCard))}
                     />
                 ))
             }
