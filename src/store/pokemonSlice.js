@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
+
 import { getPokemon } from '../services/PokemonService';
 
 const initialState = {
@@ -24,6 +25,9 @@ export const pokemonSlice = createSlice({
         },
         handleReadonly: (state) => {
             state.readonly = !state.readonly;
+        },
+        handleSelectAll: (state, action) => {
+            state.info = state.info.map((value) => ({ ...value, checked: action.payload }));
         },
     },
     extraReducers(builder) {
@@ -63,6 +67,7 @@ export const {
     handleAdd,
     handleDelete,
     handleReadonly,
+    handleSelectAll,
 } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;

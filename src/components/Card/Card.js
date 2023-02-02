@@ -1,13 +1,14 @@
-import './Card.css';
 import { useEffect, useState } from 'react';
 import { BsPencilSquare, BsCheck2Square, BsXSquare } from 'react-icons/bs';
-import Checkbox from '../Checkbox';
-import CardHeader from './CardHeader';
-import CardBody from './CardBody';
-import { withLoadingDelay } from '../withLoadingDelay';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './Card.module.css';
+import Checkbox from '../Checkbox';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
+import { withLoadingDelay } from './withLoadingDelay';
 
 export function Card({ card, onEdit, variant }) {
     const {
@@ -54,7 +55,7 @@ export function Card({ card, onEdit, variant }) {
 
     return (
         <div
-            className={variant === 'card' ? 'card' : 'page'}
+            className={variant === 'card' ? styles.card : styles.page}
             style={{ backgroundColor: checked ? '#252525' : '' }}
             onDoubleClick={(!isEdit && variant === 'card') ? () => navigate(`card/${id}`) : null}
         >
@@ -65,17 +66,17 @@ export function Card({ card, onEdit, variant }) {
             >
                 {
                     isEdit ? (
-                        <div className={'card-edit'}>
-                            <button className={'button-pencil'} onClick={onSaveCard}>
-                                <BsCheck2Square className={'pencil'} />
+                        <div className={styles.cardEdit}>
+                            <button className={styles.buttonPencil} onClick={onSaveCard}>
+                                <BsCheck2Square className={styles.pencil} />
                             </button>
-                            <button className={'button-pencil'} onClick={onCloseCard}>
-                                <BsXSquare className={'exit'} />
+                            <button className={styles.buttonPencil} onClick={onCloseCard}>
+                                <BsXSquare className={styles.exit} />
                             </button>
                         </div>
                     ) : (
-                        <button className={'button-pencil'} onClick={onEditCard}>
-                            <BsPencilSquare className={'pencil'} />
+                        <button className={styles.buttonPencil} onClick={onEditCard}>
+                            <BsPencilSquare className={styles.pencil} />
                         </button>
                     )
                 }

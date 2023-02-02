@@ -1,8 +1,11 @@
-import Card from './Card/Card';
-import './Card/Card.css';
 import { BarLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
+import { BiMessageSquareError } from 'react-icons/bi';
+
 import { selectPokemonCount, handleEdit } from '../store/pokemonSlice';
+import Card from './Card/Card';
+import cardStyles from './Card/Card.module.css';
+import commonStyles from '../styles/Common.module.css';
 
 function CardList() {
     const {
@@ -20,10 +23,10 @@ function CardList() {
 
     if (status === 'loading') {
         return (
-            <div className={'loading-box'}>
+            <div className={commonStyles.loadingBox}>
                 <BarLoader
                     color="#007a7e"
-                    className={'loading-spinner'}
+                    className={commonStyles.loadingSpinner}
                     width={'100%'}
                 />
             </div>
@@ -31,15 +34,20 @@ function CardList() {
     }
 
     if (status === 'failed') {
-        return <h1 className={'noCards'}>{error}</h1>;
+        return (
+            <div className={commonStyles.notFound}>
+                <BiMessageSquareError className={commonStyles.emoji} />
+                <h1>{error}</h1>
+            </div>
+        );
     }
 
     if (count <= 0) {
-        return <h1 className={'noCards'}>All cards are gone...</h1>;
+        return <h1 className={cardStyles.noCards}>All cards are gone...</h1>;
     }
 
     return (
-        <div className={'cards'}>
+        <div className={cardStyles.cards}>
             {
                 info.map(card => (
                     <Card

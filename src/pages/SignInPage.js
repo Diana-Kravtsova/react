@@ -1,11 +1,12 @@
 import { FiUser } from 'react-icons/fi';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import './SignIn.css';
 import { useFormik } from 'formik';
-import Input from '../components/Input';
 import * as yup from 'yup';
 
-function SignIn() {
+import Input from '../components/Input';
+import styles from './Pages.module.css';
+
+function SignInPage() {
     const validationSchema = yup.object({
         email: yup
             .string('Enter email')
@@ -46,7 +47,7 @@ function SignIn() {
     });
 
     return (
-        <form className={'signIn'} onSubmit={handleSubmit}>
+        <form className={styles.signIn} onSubmit={handleSubmit}>
             <h2>Sign in</h2>
             <Input
                 type={'email'}
@@ -69,7 +70,7 @@ function SignIn() {
                 onBlur={handleBlur}
             />
             <button
-                className={'signIn-button'}
+                className={styles.signInButton}
                 type={'submit'}
                 disabled={!dirty || !isValid}
             >
@@ -79,4 +80,4 @@ function SignIn() {
     );
 }
 
-export default SignIn;
+export default SignInPage;

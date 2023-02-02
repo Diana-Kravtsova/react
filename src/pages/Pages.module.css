@@ -14,7 +14,7 @@
     width: 50%;
 }
 
-.signIn-button {
+.signInButton {
     margin-top: 3em;
     border: none;
     color: var(--text-color);
@@ -23,13 +23,44 @@
     padding: 15px 20px;
 }
 
-.signIn-button:active {
+.signInButton:active {
     background-color: var(--text-color);
     color: var(--main-color);
 }
 
-.signIn-button:disabled {
+.signInButton:disabled {
     cursor: not-allowed;
     background-color: #838282;
     color: var(--text-color);
+}
+
+.inputContainer {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+.iconInput{
+    display: flex;
+}
+
+.input {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-bottom: 0.15em solid var(--main-color);
+}
+
+.inputError {
+    border-bottom: 0.15em solid #7e0000;
+}
+
+.iconError {
+    color: #7e0000;
+}
+
+.errorText {
+    color: #7e0000;
+    display: flex;
+    font-size: 0.7em;
 }

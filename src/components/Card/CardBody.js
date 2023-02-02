@@ -1,16 +1,16 @@
-import './Card.css';
+import styles from './Card.module.css';
 
 function CardBody({ onEdit, text, isEdit, editedText }) {
     if (isEdit) {
         return (
-            <div className={'card-textarea'}>
+            <div className={styles.cardTextarea}>
                 <textarea value={editedText} onChange={event => onEdit(event.target.value)} />
             </div>
         );
     }
 
     return (
-        <div className={'card-text'}>{text}</div>
+        <div className={styles.cardText}>{text}</div>
     );
 }
 

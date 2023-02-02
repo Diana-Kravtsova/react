@@ -1,44 +1,65 @@
-import Badge from '../Badge';
+import { useState } from 'react';
 import { BsLock, BsPlusSquare, BsTrash2, BsUnlock } from 'react-icons/bs';
+import { RiCheckboxMultipleBlankFill, RiCheckboxMultipleBlankLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPokemonCount, handleAdd, handleReadonly, handleDelete } from '../../store/pokemonSlice';
+import classNames from 'classnames';
+
+import Badge from '../Badge';
+import { selectPokemonCount, handleAdd, handleReadonly, handleDelete, handleSelectAll } from '../../store/pokemonSlice';
+import headerStyles from './Header.module.css';
+import commonStyles from '../../styles/Common.module.css';
 
 function ButtonMenu() {
     const { readonly } = useSelector(state => state.pokemon);
     const dispatch = useDispatch();
     const count = useSelector(selectPokemonCount);
+    const [uncheckedAll, setUncheckedAll] = useState(true);
 
     return (
-        <div className={'buttons'}>
+        <div className={headerStyles.buttons}>
             <Badge>{count}</Badge>
-            <div className={'button-hr'} />
+            <div className={headerStyles.buttonHr} />
             {
                 readonly || (
                     <>
                         <button
-                            className={'button'}
+                            className={headerStyles.button}
                             onClick={() => dispatch(handleAdd())}
                         >
-                            <BsPlusSquare className={'icon'} />
+                            <BsPlusSquare className={commonStyles.icon} />
                         </button>
                         <button
-                            className={'button'}
+                            className={headerStyles.button}
                             onClick={() => dispatch(handleDelete())}
                             disabled={!count}
                         >
-                            <BsTrash2 className={'delete icon'} />
+                            <BsTrash2 className={classNames(headerStyles.delete, commonStyles.icon)} />
                         </button>
                     </>
                 )
             }
             <button
-                className={'button'}
+                className={headerStyles.button}
+                disabled={!count}
+                onClick={() => {
+                    dispatch(handleSelectAll(uncheckedAll));
+                    setUncheckedAll(!uncheckedAll);
+                }}
+            >
+                {
+                    uncheckedAll
+                        ? <RiCheckboxMultipleBlankLine className={classNames(headerStyles.delete, commonStyles.icon)}/>
+                        : <RiCheckboxMultipleBlankFill className={classNames(headerStyles.delete, commonStyles.icon)}/>
+                }
+            </button>
+            <button
+                className={headerStyles.button}
                 onClick={() => dispatch(handleReadonly())}
             >
                 {
-                    readonly ?
-                        <BsUnlock className={'icon'} />
-                        : <BsLock className={'icon'} />
+                    readonly
+                        ? <BsUnlock className={commonStyles.icon} />
+                        : <BsLock className={commonStyles.icon} />
                 }
             </button>
         </div>

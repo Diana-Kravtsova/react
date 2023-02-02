@@ -23,13 +23,13 @@ hr {
     border-top: 1px solid #838282;
 }
 
-.card-caption input {
+.cardCaption input {
     background-color: var(--primary-color);
     border: 0.15em solid var(--main-color);
     color: var(--text-color);
 }
 
-.card-caption {
+.cardCaption {
     font-size: 1.2rem;
     font-weight: bold;
     display: flex;
@@ -37,7 +37,7 @@ hr {
     word-break: break-word;
 }
 
-.card-text {
+.cardText {
     font-size: 1rem;
     padding: 0.5rem;
     word-break: break-word;
@@ -48,7 +48,7 @@ hr {
     flex-wrap: wrap;
 }
 
-.button-pencil {
+.buttonPencil {
     -webkit-appearance: none;
     appearance: none;
     margin-right: 5px;
@@ -70,29 +70,18 @@ hr {
     height: 1.5em;
 }
 
-.card-edit {
+.cardEdit {
     display: flex;
     align-items: center;
 }
 
-.card-textarea textarea {
+.cardTextarea textarea {
     background-color: var(--primary-color);
     border: 0.15em solid var(--main-color);
     color: var(--text-color);
     min-width: 28rem;
     min-height: 9rem;
     max-width: 28rem;
-}
-
-.loading-box {
-    display: flex;
-    align-content: center;
-    align-items: center;
-}
-
-.loading-spinner {
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .noCards {
