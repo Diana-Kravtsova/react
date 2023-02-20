@@ -1,7 +1,8 @@
-import Header from '../components/Header/Header';
 import { Outlet } from 'react-router-dom';
 
-function Home() {
+import Header from '../components/Header/Header';
+
+function HomePage() {
     return (
         <>
             <Header/>
@@ -10,4 +11,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default HomePage;

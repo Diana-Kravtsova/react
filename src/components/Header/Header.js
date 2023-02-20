@@ -1,4 +1,4 @@
-import './Header.css';
+import styles from './Header.module.css';
 import Menu from './Menu';
 import ButtonMenu from './ButtonMenu';
 
@@ -9,7 +9,7 @@ function Header() {
     ];
 
     return (
-        <div className={'header'}>
+        <div className={styles.header}>
             <Menu items={navigation} />
             <ButtonMenu />
         </div>

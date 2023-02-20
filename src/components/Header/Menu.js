@@ -1,17 +1,24 @@
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+
+import styles from './Header.module.css';
 
 function Menu({ items }) {
     return (
         <ul>
             {
-                items.map((link, id) => (
-                    <li key={id}>
+                items.map(({ link, name }) => (
+                    <li key={link}>
                         <NavLink
-                            to={link.link}
-                            className={({ isActive }) => isActive ? 'activeLink link' : 'link'}
+                            to={link}
+                            className={
+                                ({ isActive }) => isActive
+                                    ? classNames(styles.activeLink, styles.link)
+                                    : styles.link
+                            }
                             end
                         >
-                            {' ' + link.name}
+                            {' ' + name}
                         </NavLink>
                     </li>
                 ))

@@ -37,12 +37,6 @@
     color: #838282;
 }
 
-.icon {
-    color: var(--main-color);
-    width: 1.7em;
-    height: 1.7em;
-}
-
 .delete:active {
     color: var(--text-color);
     width: 1.7em;
@@ -54,7 +48,7 @@
     align-items: center;
 }
 
-.button-hr {
+.buttonHr {
     border: none;
     border-left: 2px solid var(--main-color);
     border-radius: 1px;

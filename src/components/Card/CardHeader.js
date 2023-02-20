@@ -1,11 +1,11 @@
-import './Card.css'
+import styles from './Card.module.css';
 
-function CardHeader({onEdit, caption, isEdit, editedCaption, readonly, children, checkbox}) {
+function CardHeader({ onEdit, caption, isEdit, editedCaption, readonly, children, checkbox }) {
     if (readonly) {
         return (
-            <div className={'card-caption'}>
+            <div className={styles.cardCaption}>
                 {caption}
-                <div className={'card-edit'}>
+                <div className={styles.cardEdit}>
                     {checkbox}
                 </div>
             </div>
@@ -14,17 +14,17 @@ function CardHeader({onEdit, caption, isEdit, editedCaption, readonly, children,
 
     if (isEdit) {
         return (
-            <div className={'card-caption'}>
-                <input value={editedCaption} onChange={event => onEdit(event.target.value)}/>
+            <div className={styles.cardCaption}>
+                <input value={editedCaption} onChange={event => onEdit(event.target.value)} />
                 {children}
             </div>
         );
     }
 
     return (
-        <div className={'card-caption'}>
+        <div className={styles.cardCaption}>
             {caption}
-            <div className={'card-edit'}>
+            <div className={styles.cardEdit}>
                 {children}{checkbox}
             </div>
         </div>

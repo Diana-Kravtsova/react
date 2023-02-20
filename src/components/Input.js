@@ -1,48 +1,21 @@
-import styled from 'styled-components';
 import classNames from 'classnames';
-import '../pages/SignIn.css';
 
-const InputContainer = styled.div`
-    div {
-        display: flex;
-        margin-top: 1rem;
-    }
-
-    input {
-        color: var(--text-color);
-        background-color: var(--primary-color);
-        border: none;
-        border-bottom: 0.15em solid var(--main-color);
-    }
-
-    .inputError {
-        border-bottom: 0.15em solid #7e0000;
-    }
-
-    .iconError {
-        color: #7e0000;
-    }
-
-    span {
-        color: #7e0000;
-        display: flex;
-        font-size: 0.7em;
-    }
-`;
+import commonStyles from '../styles/Common.module.css';
+import pagesStyles from '../pages/Pages.module.css';
 
 const Input = ({ errors, touched, Icon, ...props }) => (
-    <InputContainer>
-        <div>
-            <Icon className={classNames('icon', { 'iconError': touched && errors })} />
+    <div className={pagesStyles.inputContainer}>
+        <div className={pagesStyles.iconInput}>
+            <Icon className={classNames(commonStyles.icon, { [pagesStyles.iconError]: touched && errors })} />
             <input
-                className={classNames({ 'inputError': touched && errors })}
+                className={classNames(pagesStyles.input, { [pagesStyles.inputError]: touched && errors })}
                 id={props.type}
                 name={props.type}
                 {...props}
             />
         </div>
-        <span>{touched && errors}</span>
-    </InputContainer>
+        <span className={pagesStyles.errorText}>{touched && errors}</span>
+    </div>
 );
 
 export default Input;

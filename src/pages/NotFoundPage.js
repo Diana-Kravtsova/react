@@ -1,26 +1,12 @@
 import { TbError404 } from 'react-icons/tb';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { BarLoader } from 'react-spinners';
 import { GiDeadHead } from 'react-icons/gi';
 
-const NotFoundContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: var(--main-color);
-    padding-top: 20vh;
+import commonStyles from '../styles/Common.module.css';
 
-    .emoji {
-        padding-top: 2em;
-        width: 10em;
-        height: 10em;
-    }
-`;
-
-function NotFound() {
+function NotFoundPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,20 +18,20 @@ function NotFound() {
 
     return (
         <>
-            <div className={'loading-box'}>
+            <div className={commonStyles.loadingBox}>
                 <BarLoader
                     color={'#007a7e'}
-                    className={'loading-spinner'}
+                    className={commonStyles.loadingSpinner}
                     width={'100%'}
                 />
             </div>
-            <NotFoundContainer>
-                <TbError404 className={'emoji'} />
+            <div className={commonStyles.notFound}>
+                <TbError404 className={commonStyles.emoji} />
                 <h1>Oh no! Page not found. Redirecting to homepage...</h1>
-                <GiDeadHead className={'emoji'}/>
-            </NotFoundContainer>
+                <GiDeadHead className={commonStyles.emoji} />
+            </div>
         </>
     );
 }
 
-export default NotFound;
+export default NotFoundPage;

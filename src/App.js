@@ -1,27 +1,35 @@
-import CardList from './components/CardList';
-import './components/Header/Header.css';
-import SignIn from './pages/SignIn';
-import NotFound from './pages/NotFound';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './pages/Home';
+
+import { fetchPokemon } from './store/pokemonSlice';
+import CardList from './components/CardList';
+import SignInPage from './pages/SignInPage';
+import NotFoundPage from './pages/NotFoundPage';
+import HomePage from './pages/HomePage';
+import PokemonPage from './pages/PokemonPage';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />,
-        errorElement: <NotFound />,
+        element: <HomePage />,
+        errorElement: <NotFoundPage />,
         children: [
             { path: '', element: <CardList /> },
-            { path: 'signIn', element: <SignIn /> },
+            { path: 'signIn', element: <SignInPage /> },
+            { path: 'card/:id', element: <PokemonPage/>},
         ],
     },
 ]);
 
 function App() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchPokemon())
+    });
+
     return (
-        <>
-            <RouterProvider router={router} />
-        </>
+        <RouterProvider router={router} />
     );
 }
 
