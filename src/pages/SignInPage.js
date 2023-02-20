@@ -2,11 +2,17 @@ import { FiUser } from 'react-icons/fi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Input from '../components/Input';
 import styles from './Pages.module.css';
+import { signIn } from '../store/authenticationSlice';
 
 function SignInPage() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const validationSchema = yup.object({
         email: yup
             .string('Enter email')
@@ -35,7 +41,7 @@ function SignInPage() {
         },
         validationSchema: validationSchema,
         onSubmit: (values, actions) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(signIn(values));
             actions.setSubmitting(true);
             actions.resetForm({
                 values: {
@@ -43,6 +49,7 @@ function SignInPage() {
                     password: '',
                 },
             });
+            navigate('/');
         },
     });
 

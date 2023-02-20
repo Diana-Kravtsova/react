@@ -8,6 +8,7 @@ import SignInPage from './pages/SignInPage';
 import NotFoundPage from './pages/NotFoundPage';
 import HomePage from './pages/HomePage';
 import PokemonPage from './pages/PokemonPage';
+import SettingsPage from './pages/SettingsPage';
 
 const router = createBrowserRouter([
     {
@@ -17,15 +18,16 @@ const router = createBrowserRouter([
         children: [
             { path: '', element: <CardList /> },
             { path: 'signIn', element: <SignInPage /> },
-            { path: 'card/:id', element: <PokemonPage/>},
+            { path: 'card/:id', element: <PokemonPage /> },
+            { path: 'settings', element: <SettingsPage /> },
         ],
     },
 ]);
 
 function App() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchPokemon())
+        dispatch(fetchPokemon());
     });
 
     return (
