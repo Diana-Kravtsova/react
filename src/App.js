@@ -1,37 +1,18 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { fetchPokemon } from './store/pokemonSlice';
-import CardList from './components/CardList';
-import SignInPage from './pages/SignInPage';
-import NotFoundPage from './pages/NotFoundPage';
-import HomePage from './pages/HomePage';
-import PokemonPage from './pages/PokemonPage';
-import SettingsPage from './pages/SettingsPage';
-
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <HomePage />,
-        errorElement: <NotFoundPage />,
-        children: [
-            { path: '', element: <CardList /> },
-            { path: 'signIn', element: <SignInPage /> },
-            { path: 'card/:id', element: <PokemonPage /> },
-            { path: 'settings', element: <SettingsPage /> },
-        ],
-    },
-]);
+import routes from './routes';
 
 function App() {
+    const { type } = useSelector(state => state.auth);
+    const routing = createBrowserRouter(routes(type));
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchPokemon());
-    });
+    useEffect(() => {dispatch(fetchPokemon());});
 
     return (
-        <RouterProvider router={router} />
+        <RouterProvider router={routing} />
     );
 }
 

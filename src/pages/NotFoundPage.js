@@ -6,7 +6,7 @@ import { GiDeadHead } from 'react-icons/gi';
 
 import commonStyles from '../styles/Common.module.css';
 
-function NotFoundPage() {
+function NotFoundPage({ message }) {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function NotFoundPage() {
             </div>
             <div className={commonStyles.notFound}>
                 <TbError404 className={commonStyles.emoji} />
-                <h1>Oh no! Page not found. Redirecting to homepage...</h1>
+                <h1>Oh no! {message ?? 'Page not found.'} Redirecting to homepage...</h1>
                 <GiDeadHead className={commonStyles.emoji} />
             </div>
         </>
