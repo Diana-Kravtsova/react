@@ -1,16 +1,16 @@
+import { useSelector } from 'react-redux';
+
 import styles from './Header.module.css';
 import Menu from './Menu';
 import ButtonMenu from './ButtonMenu';
 
 function Header() {
-    const navigation = [
-        { link: '', name: 'home' },
-        { link: 'signIn', name: 'sign in' },
-    ];
+    const { type, email } = useSelector(state => state.auth);
 
     return (
         <div className={styles.header}>
-            <Menu items={navigation} />
+            <Menu />
+            {type && <span>Hello, {email}!</span>}
             <ButtonMenu />
         </div>
     );
