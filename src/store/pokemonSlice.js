@@ -46,12 +46,6 @@ export const pokemonSlice = createSlice({
     },
 });
 
-export const selectPokemonCount = state => state.pokemon.info.length;
-
-export const selectPokemon = (pokemonId) => {
-    return (state) => state.pokemon.info.find(({ id }) => id === pokemonId);
-};
-
 export const fetchPokemon = createAsyncThunk('info/fetchPokemon', async () => {
     const response = await getPokemon();
     return response.map(data => ({

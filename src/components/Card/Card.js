@@ -9,6 +9,7 @@ import Checkbox from '../Checkbox';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import { withLoadingDelay } from './withLoadingDelay';
+import { selectReadonly } from '../../store/selectors';
 
 export function Card({ card, onEdit, variant }) {
     const {
@@ -18,7 +19,7 @@ export function Card({ card, onEdit, variant }) {
         checked,
     } = card;
     const navigate = useNavigate();
-    const { readonly } = useSelector(state => state.pokemon);
+    const readonly = useSelector(selectReadonly);
     const [isEdit, setEdit] = useState(!text && !caption);
     const [newCard, setNewCard] = useState(card);
 
@@ -53,11 +54,12 @@ export function Card({ card, onEdit, variant }) {
         />
     );
 
-    return (
+     return (
         <div
             className={variant === 'card' ? styles.card : styles.page}
             style={{ backgroundColor: checked ? '#252525' : '' }}
             onDoubleClick={(!isEdit && variant === 'card') ? () => navigate(`card/${id}`) : null}
+            data-testid={'CardId'}
         >
             <CardHeader
                 onEdit={caption => setNewCard({ ...newCard, caption })}
@@ -67,10 +69,10 @@ export function Card({ card, onEdit, variant }) {
                 {
                     isEdit ? (
                         <div className={styles.cardEdit}>
-                            <button className={styles.buttonPencil} onClick={onSaveCard}>
+                            <button className={styles.buttonPencil} onClick={onSaveCard} aria-label='pencil'>
                                 <BsCheck2Square className={styles.pencil} />
                             </button>
-                            <button className={styles.buttonPencil} onClick={onCloseCard}>
+                            <button className={styles.buttonPencil} onClick={onCloseCard} aria-label='exit'>
                                 <BsXSquare className={styles.exit} />
                             </button>
                         </div>
