@@ -1,10 +1,10 @@
 import { TbError404 } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { BarLoader } from 'react-spinners';
 import { GiDeadHead } from 'react-icons/gi';
 
 import commonStyles from '../styles/Common.module.css';
+import Loader from '../components/Loader';
 
 function NotFoundPage({ message }) {
     const navigate = useNavigate();
@@ -18,13 +18,7 @@ function NotFoundPage({ message }) {
 
     return (
         <>
-            <div className={commonStyles.loadingBox}>
-                <BarLoader
-                    color={'#007a7e'}
-                    className={commonStyles.loadingSpinner}
-                    width={'100%'}
-                />
-            </div>
+            <Loader/>
             <div className={commonStyles.notFound}>
                 <TbError404 className={commonStyles.emoji} />
                 <h1>Oh no! {message ?? 'Page not found.'} Redirecting to homepage...</h1>
