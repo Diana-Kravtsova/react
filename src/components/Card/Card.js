@@ -10,6 +10,7 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import { withLoadingDelay } from './withLoadingDelay';
 import { selectReadonly } from '../../store/selectors';
+import { stopPropagation } from '../../utils';
 
 export function Card({ card, onEdit, variant }) {
     const {
@@ -41,8 +42,6 @@ export function Card({ card, onEdit, variant }) {
         onEdit({ ...card, checked: false });
         setEdit(!isEdit);
     };
-
-    const stopPropagation = e => e.stopPropagation();
 
     const onCheckCard = () => onEdit({ ...card, checked: !(isEdit || checked) });
 
