@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import Badge from '../Badge';
-import { selectPokemonCount, handleAdd, handleReadonly, handleDelete, handleSelectAll } from '../../store/pokemonSlice';
+import { handleAdd, handleReadonly, handleDelete, handleSelectAll } from '../../store/pokemonSlice';
+import { selectPokemonCount } from '../../store/selectors';
 import headerStyles from './Header.module.css';
 import commonStyles from '../../styles/Common.module.css';
 

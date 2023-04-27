@@ -22,11 +22,13 @@ const CheckboxContainer = styled.div`
     }
 `;
 
-const Input = styled.input.attrs({ type: 'checkbox' })``;
-
 const Checkbox = (props) => (
     <CheckboxContainer>
-        <Input {...props} />
+        <input
+            type="checkbox"
+            data-testid="checkboxId"
+            {...props}
+        />
     </CheckboxContainer>
 );
 

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const URL = "https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json";
 

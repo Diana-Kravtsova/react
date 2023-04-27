@@ -2,7 +2,8 @@ import { BarLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiMessageSquareError } from 'react-icons/bi';
 
-import { selectPokemonCount, handleEdit } from '../store/pokemonSlice';
+import { handleEdit } from '../store/pokemonSlice';
+import { selectPokemonCount } from '../store/selectors';
 import Card from './Card/Card';
 import cardStyles from './Card/Card.module.css';
 import commonStyles from '../styles/Common.module.css';
