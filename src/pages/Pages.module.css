@@ -1,0 +1,66 @@
+.signIn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5vh 0 5vh;
+    max-width: 30rem;
+    min-width: 30rem;
+    min-height: 15rem;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    margin: 20vh auto;
+    width: 50%;
+}
+
+.signInButton {
+    margin-top: 3em;
+    border: none;
+    color: var(--text-color);
+    background-color: var(--main-color);
+    border-radius: 12px;
+    padding: 15px 20px;
+}
+
+.signInButton:active {
+    background-color: var(--text-color);
+    color: var(--main-color);
+}
+
+.signInButton:disabled {
+    cursor: not-allowed;
+    background-color: #838282;
+    color: var(--text-color);
+}
+
+.inputContainer {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+.iconInput{
+    display: flex;
+}
+
+.input {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-bottom: 0.15em solid var(--main-color);
+}
+
+.inputError {
+    border-bottom: 0.15em solid #7e0000;
+}
+
+.iconError {
+    color: #7e0000;
+}
+
+.errorText {
+    color: #7e0000;
+    display: flex;
+    font-size: 0.7em;
+}

@@ -1,0 +1,57 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    align-items: center;
+    padding-right: 1.2rem;
+}
+
+.header li {
+    display: inline;
+    list-style: none;
+    margin-right: 20px;
+}
+
+.link {
+    color: var(--main-color);
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.activeLink{
+    color: var(--text-color);
+}
+
+.button {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none !important;
+    margin-left: 10px;
+}
+
+.button:disabled .delete {
+    cursor: not-allowed;
+    color: #838282;
+}
+
+.delete:active {
+    color: var(--text-color);
+    width: 1.7em;
+    height: 1.7em;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttonHr {
+    border: none;
+    border-left: 2px solid var(--main-color);
+    border-radius: 1px;
+    height: 30px;
+    margin: 0 0.5rem 0 1.2rem;
+}
