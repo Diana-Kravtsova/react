@@ -1,4 +1,3 @@
-import { BarLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiMessageSquareError } from 'react-icons/bi';
 
@@ -7,6 +6,7 @@ import { selectPokemonCount } from '../store/selectors';
 import Card from './Card/Card';
 import cardStyles from './Card/Card.module.css';
 import commonStyles from '../styles/Common.module.css';
+import Loader from './Loader';
 
 function CardList() {
     const {
@@ -24,13 +24,7 @@ function CardList() {
 
     if (status === 'loading') {
         return (
-            <div className={commonStyles.loadingBox}>
-                <BarLoader
-                    color="#007a7e"
-                    className={commonStyles.loadingSpinner}
-                    width={'100%'}
-                />
-            </div>
+            <Loader />
         );
     }
 
